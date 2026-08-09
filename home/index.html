@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQl - profile</title>
+    <link rel="stylesheet" href="../css/bg.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+    <button class="logout-btn">LOGOUT</button>
+
+    <dialog class="activity-dialog">
+        <header>
+            <button class="activity-btn"></button>
+            <button class="activity-btn"></button>
+        </header>
+    </dialog>
+
+    <svg class="connector-layer">
+        <defs>
+            <filter id="wireGlowFilter" x="-200%" y="-200%" width="500%" height="500%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+        <path id="wireBase" class="wire-base" />
+        <path id="wireFlow" class="wire-flow" />
+        <path id="wireBase2" class="wire-base" />
+        <path id="wireFlow2" class="wire-flow" />
+        <path id="wireBase3" class="wire-base" />
+        <path id="wireFlow3" class="wire-flow" />
+        <path id="wireBase4" class="wire-base" />
+        <path id="wireFlow4" class="wire-flow" />
+        <path id="wireBase5" class="wire-base" />
+    </svg>
+
+    <div class="ratio-container">
+        <div class="battery"></div>
+
+        <div class="terminal">
+            <header>
+                <h2>AUDIT RATIO</h2>
+            </header>
+            <div class="terminal-screen">
+                <h3>0</h3>
+                <h2 id="show-activity">VIEW ACTIVITY</h2>
+            </div>
+        </div>
+        <h2 id="to-activity">FULL ACTIVITY</h2>
+
+
+    </div>
+
+    <div class="left-stack">
+        <div class="hdd-container">
+            <div class="hdd"></div>
+            <div class="audit-panel">
+                <div class="audit-list">
+                    <div class="audit-row">
+                        <div class="audit-info">
+                            <span class="audit-project">project-name</span>
+                            <span class="audit-user">username</span>
+                        </div>
+                    </div>
+                    <div class="audit-row">
+                        <div class="audit-info">
+                            <span class="audit-project">project-name</span>
+                            <span class="audit-user">username</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="audit-history-btn">AUDIT HISTORY</button>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="graph-module" id="graphModule" data-theme="js">
+                <div class="gpu-frame">
+                    <div class="gpu-frame-header">
+                        <span class="gpu-frame-icon">&#9638;</span>
+                        <h2>GPU</h2>
+                        <span class="gpu-frame-dot"></span>
+                    </div>
+                    <div class="gpu"></div>
+                </div>
+
+                <div class="bottom-panels">
+                    <div class="skills-radar-panel" id="skillsRadarContainer">
+                        <header class="skills-radar-header">
+                            <span class="skills-radar-icon">&#9670;</span>
+                            <h2>SKILLS RADAR</h2>
+                            <span class="skills-radar-dot"></span>
+                        </header>
+                        <div class="skills-radar-body">
+                            <svg class="skills-radar-svg" id="skillsRadarSvg" viewBox="0 0 320 320"
+                                preserveAspectRatio="xMidYMid meet">
+                                <g id="skillsRadarGrid" class="skills-radar-grid"></g>
+                                <g id="skillsRadarAxes" class="skills-radar-axes"></g>
+                                <polygon id="skillsRadarShape" class="skills-radar-shape" points=""></polygon>
+                                <g id="skillsRadarDots" class="skills-radar-dots"></g>
+                                <g id="skillsRadarLabels" class="skills-radar-labels"></g>
+                            </svg>
+                            <span class="skills-radar-empty" id="skillsRadarEmpty">NO SKILL DATA</span>
+                        </div>
+                    </div>
+
+                    <div class="xp-graph" id="xpGraph">
+                        <div class="xp-graph-header">
+                            <div class="xp-graph-title">
+                                <span class="xp-graph-logo" id="xpGraphLogo"></span>
+                                <div class="xp-graph-title-text">
+                                    <h2>XP MODULE</h2>
+                                    <span class="xp-graph-sub" id="xpGraphSub">JS PISCINE</span>
+                                </div>
+                            </div>
+                            <div class="xp-graph-status">
+                                <span class="xp-status-dot" id="xpStatusDot"></span>
+                                <span id="xpStatusText">READY</span>
+                            </div>
+                        </div>
+
+                        <div class="xp-graph-controls">
+                            <div class="xp-mode-selector" id="xpModeSelector">
+                                <button class="xp-mode-btn active" data-mode="js" type="button">JS</button>
+                                <button class="xp-mode-btn" data-mode="go" type="button">GO</button>
+                                <button class="xp-mode-btn" data-mode="rust" type="button">RUST</button>
+                                <button class="xp-mode-btn" data-mode="module" type="button">MODULE</button>
+                            </div>
+                            <div class="xp-period-selector" id="xpPeriodSelector">
+                                <button class="xp-period-btn" data-period="start" type="button">SINCE START</button>
+                                <button class="xp-period-btn" data-period="1m" type="button">1M</button>
+                                <button class="xp-period-btn" data-period="3m" type="button">3M</button>
+                                <button class="xp-period-btn active" data-period="6m" type="button">6M</button>
+                                <button class="xp-period-btn" data-period="12m" type="button">12M</button>
+                            </div>
+                        </div>
+
+                        <div class="xp-graph-stats">
+                            <div class="xp-stat">
+                                <span class="xp-stat-label">TOTAL XP</span>
+                                <span class="xp-stat-value" id="xpTotalValue">0 KB</span>
+                            </div>
+                            <div class="xp-stat">
+                                <span class="xp-stat-label">GAINS</span>
+                                <span class="xp-stat-value" id="xpCountValue">0</span>
+                            </div>
+                            <div class="xp-stat">
+                                <span class="xp-stat-label">AVG/GAIN</span>
+                                <span class="xp-stat-value" id="xpAvgValue">0 KB</span>
+                            </div>
+                        </div>
+
+                        <div class="xp-graph-body" id="xpGraphBody">
+                            <svg class="xp-graph-svg" id="xpGraphSvg" viewBox="0 0 760 300"
+                                preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="xpFillGradient" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="var(--xp-accent)" stop-opacity="0.35" />
+                                        <stop offset="100%" stop-color="var(--xp-accent)" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                                <g id="xpGridLines" class="xp-grid-lines"></g>
+                                <path id="xpAreaPath" class="xp-area-path" />
+                                <path id="xpLinePath" class="xp-line-path" />
+                                <g id="xpHoverGroup" class="xp-hover-group">
+                                    <line id="xpHoverLine" class="xp-hover-line" x1="0" y1="0" x2="0" y2="300" />
+                                    <circle id="xpHoverDot" class="xp-hover-dot" r="4" />
+                                </g>
+                                <rect id="xpHoverCapture" class="xp-hover-capture" x="0" y="0" width="760"
+                                    height="300" />
+                            </svg>
+
+                            <div class="xp-graph-tooltip" id="xpGraphTooltip">
+                                <span class="xp-tooltip-date" id="xpTooltipDate"></span>
+                                <span class="xp-tooltip-gain" id="xpTooltipGain"></span>
+                                <span class="xp-tooltip-total" id="xpTooltipTotal"></span>
+                            </div>
+
+                            <div class="xp-graph-empty" id="xpGraphEmpty">
+                                <span class="xp-empty-title">NO XP DATA</span>
+                                <span class="xp-empty-sub">No XP earned during this period.<br>Try selecting a
+                                    different time range.</span>
+                            </div>
+
+                            <div class="xp-graph-loading" id="xpGraphLoading">
+                                <div class="xp-loading-bars">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                                <span class="xp-loading-text">READING XP DATA...</span>
+                            </div>
+
+                            <div class="xp-graph-error" id="xpGraphError">
+                                <span class="xp-error-title">SIGNAL LOST</span>
+                                <span class="xp-error-sub" id="xpErrorMessage">Could not load XP data. Please try
+                                    again later.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cpu"></div>
+
+    <div class="skills-container">
+        <div class="ram first"></div>
+        <div class="ram second"></div>
+        <div class="terminal project-terminal">
+            <header>
+                <span class="project-status-dot"></span>
+                <h2>PROJECT STATUS</h2>
+            </header>
+            <div class="terminal-screen">
+                <span class="project-terminal-label">CURRENT PROJECT</span>
+                <span class="project-terminal-name" id="current-project-name">---</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/homePage/home.js"></script>
+    <script type="module" src="../js/helpers/logout.js"></script>
+</body>
+
+</html>

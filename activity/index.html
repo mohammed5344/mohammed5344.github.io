@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL - Activity History</title>
+    <link rel="stylesheet" href="../css/bg.css">
+    <link rel="stylesheet" href="../css/activity.css">
+</head>
+
+<body>
+    <a href="/home/" class="back-home-btn">&lt; BACK</a>
+    <button class="logout-btn">LOGOUT</button>
+
+    <div class="robot"></div>
+
+    <div class="monitor">
+        <div class="screen-content">
+        </div>
+
+        <div class="led"></div>
+    </div>
+
+    <div class="terminals-container">
+        <div class="terminal xp-terminal">
+            <header>
+                <h2>TOTAL XP</h2>
+            </header>
+            <div class="terminal-screen">
+                <h3>0</h3>
+            </div>
+        </div>
+
+        <div class="terminal level-terminal">
+            <header>
+                <h2>LEVEL</h2>
+            </header>
+            <div class="terminal-screen">
+                <h3>0</h3>
+            </div>
+        </div>
+
+        <div class="terminal success-terminal">
+            <header>
+                <h2>SUCCESS</h2>
+            </header>
+            <div class="terminal-screen">
+                <h3>0</h3>
+            </div>
+        </div>
+
+        <div class="terminal fail-terminal">
+            <header>
+                <h2>FAILS</h2>
+            </header>
+            <div class="terminal-screen">
+                <h3>0</h3>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/activityPage/activity-styles.js"></script>
+    <script type="module" src="../js/activityPage/activity.js"></script>
+    <script type="module" src="../js/helpers/logout.js"></script>
+</body>
+
+</html>

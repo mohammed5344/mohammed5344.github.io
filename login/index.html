@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL - login</title>
+    <link rel="stylesheet" href="../css/login.css" type="">
+    <link rel="stylesheet" href="../css/bg.css">
+</head>
+
+<body>
+    <div class="error-notification">
+        <h2>error</h2>
+    </div>
+    <div class="login-container">
+        <form id="login-form" method="post">
+            <h2>LOGIN</h2>
+            <p>WELCOME TO <span>#$!?@ </span><br>PLEASE  ENTER YOUR DETAILS </p>
+            <div class="form-section">
+                <label for="identifier">USERNAME</label>
+                <div class="input">
+                    <p id="arrow-identifier">></p>
+                    <input required type="text" name="identifier" id="identifier" class="login-input"
+                        placeholder="enter your username">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label for="password">PASSWORD</label>
+                <div class="input">
+                    <p id="arrow-password">></p>
+                    <input required type="password" name="password" id="password" class="login-input"
+                        placeholder="enter your password">
+                </div>
+            </div>
+
+            <button type="submit" class="login-button">LOGIN</button>
+
+        </form>
+    </div>
+
+    <div class="terminal">
+        <header>
+            <h2>TERMINAL OS V1.5</h2>
+        </header>
+        <div class="terminal-screen">
+            <h3>Initializing...</h3>
+            <h2 id="user">[User@host ~]$</h2>
+        </div>
+    </div>
+
+    <div class="robot">
+
+    </div>
+    <div class="floating-code-layer" id="floatingCodeLayer"></div>
+    <script type="module" src="../js/login/login-styles.js"></script>
+    <script type="module" src="../js/login/floating-code.js"></script>
+    <script type="module" src="../js/login/login.js"></script>
+</body>
+
+</html>

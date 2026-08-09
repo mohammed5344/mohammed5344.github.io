@@ -1,0 +1,41 @@
+# GraphQL
+
+A profile dashboard for 01/Reboot01 students. Logs in with school credentials, pulls XP, audits, and project data through the school's GraphQL API, and displays it as a retro terminal/dashboard UI.
+
+This is a fully static site, ready for GitHub Pages. The original Go backend only served static template files and had no server-side logic, so it has been removed. All login and data fetching happens client-side in the browser against `https://learn.reboot01.com/api`.
+
+## Project structure
+
+```
+index.html                  redirects to /login/
+login/index.html            login page
+home/index.html             main dashboard
+activity/index.html         activity/audit stats page
+audit-history/index.html    audit history page
+css/                        one stylesheet per page + bg.css shared
+js/
+  login/                    login page logic
+  homePage/                 dashboard widgets (xp graph, skills radar, battery, etc.)
+  activityPage/             activity page logic
+  audit-history/            audit history page logic
+  helpers/                  shared: cookies, logout
+```
+
+## Publishing with GitHub Pages
+
+1. Push this repository to GitHub.
+2. Go to Settings -> Pages.
+3. Under "Build and deployment", set Source to "Deploy from a branch".
+4. Pick the branch (e.g. `main`) and set the folder to `/ (root)`.
+5. Save. The site will be available at `https://<username>.github.io/<repo>/`.
+
+## Routes
+
+- `/login/` - login page
+- `/home/` - main dashboard
+- `/activity/` - activity/audit stats page
+- `/audit-history/` - audit history page
+
+## Auth
+
+Login posts credentials (basic auth, base64) directly from the browser to `https://learn.reboot01.com/api/auth/signin`, gets a JWT back, and stores it in a `token` cookie for 1 day. Every page checks for this cookie on load and redirects to `/login/` if it's missing. Logout just clears the cookie and redirects back to `/login/`.

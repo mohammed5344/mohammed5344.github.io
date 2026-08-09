@@ -1,0 +1,68 @@
+:root {
+    --bg: rgb(22, 20, 20);
+    --bg-panel: rgba(30, 34, 34, 0.55);
+    --main-color: rgb(44, 187, 187);
+    --main-color-dark: rgb(23, 97, 97);
+    --main-color-glow: rgba(44, 187, 187, 0.55);
+    --text-primary: rgb(255, 255, 255);
+    --text-secondary: rgb(150, 155, 156);
+    --radius: 9px;
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.35s ease;
+    --terminal-font: rgb(47, 170, 47);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px;  
+    background-color: var(--bg);
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 200px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(44, 187, 187, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44, 187, 187, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridPulse 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: var(--scanline-bg, repeating-linear-gradient(to bottom,
+                rgba(255, 255, 255, 0.025) 0px,
+                rgba(255, 255, 255, 0.025) 1px,
+                transparent 1px,
+                transparent 3px));
+
+    animation: scanlineMove 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+    opacity: var(--scanline-opacity, 0.5);
+}
