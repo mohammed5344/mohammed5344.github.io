@@ -8,6 +8,7 @@ import { makeHDD } from "./hdd.js";
 import { makeGPU } from "./progress-graph.js";
 import { initXpGraph } from "./xpGraph.js";
 import { renderSkillsRadar } from "./skillsRadar.js";
+import { renderAvatar } from "../helpers/avatar.js";
 
 async function validateUser() {
   const token = getCookie("token");
@@ -28,6 +29,7 @@ async function validateUser() {
           query {
             user {
               email
+              login
             }
           }
         `,
@@ -48,6 +50,9 @@ async function validateUser() {
     }
 
     console.log(data.data.user);
+    const user = Array.isArray(data.data.user) ? data.data.user[0] : data.data.user;
+    const navAvatarCanvas = document.getElementById('navAvatar');
+    renderAvatar(navAvatarCanvas, user && (user.login || user.email) || 'user');
     return token;
   } catch (err) {
     console.error(err);

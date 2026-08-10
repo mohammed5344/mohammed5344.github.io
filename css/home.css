@@ -644,6 +644,46 @@
     transform: translateY(-2px);
 }
 
+.profile-btn {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 500;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px 6px 6px;
+
+    font-family: var(--pixel-font);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: var(--main-color);
+    text-decoration: none;
+
+    background-color: rgba(0, 0, 0, 0.55);
+    border: 1px solid var(--main-color);
+    border-radius: 4px;
+
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.profile-btn:hover {
+    color: #fff;
+    background-color: rgba(44, 187, 187, 0.2);
+    box-shadow: 0 0 12px var(--main-color-glow);
+    transform: translateY(-2px);
+}
+
+.profile-btn-avatar {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--main-color);
+    border-radius: 2px;
+    image-rendering: pixelated;
+}
+
 .left-stack {
     position: absolute;
     top: 20%;
@@ -918,6 +958,10 @@
     background: var(--xp-accent);
     border-color: var(--xp-accent);
     box-shadow: 0 0 10px var(--xp-accent-glow);
+}
+
+.xp-period-btn.hidden {
+    display: none;
 }
 
 .xp-graph-stats {

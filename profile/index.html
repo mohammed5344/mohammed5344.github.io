@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL - profile</title>
+    <link rel="stylesheet" href="../css/bg.css">
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+
+<body>
+    <a href="/home/" class="back-home-btn">&lt; BACK</a>
+    <button class="logout-btn">LOGOUT</button>
+
+    <div class="profile-page">
+        <div class="profile-card">
+            <div class="profile-header">
+                <canvas class="profile-avatar" id="profileAvatar" width="120" height="120"></canvas>
+                <div class="profile-header-text">
+                    <h1 id="profileFullName">---</h1>
+                    <span class="profile-login" id="profileLogin">---</span>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2 class="profile-section-title">ACCOUNT</h2>
+                <div class="profile-grid">
+                    <div class="profile-field">
+                        <span class="profile-label">ID</span>
+                        <span class="profile-value" id="profileId">---</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-label">EMAIL</span>
+                        <span class="profile-value" id="profileEmail">---</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-label">JOINED</span>
+                        <span class="profile-value" id="profileJoined">---</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2 class="profile-section-title">PERSONAL DATA</h2>
+                <div class="profile-grid">
+                    <div class="profile-field">
+                        <span class="profile-label">DEGREE</span>
+                        <span class="profile-value" id="profileDegree">---</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-label">GENDER</span>
+                        <span class="profile-value" id="profileGender">---</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-label">PHONE NUMBER</span>
+                        <span class="profile-value" id="profilePhone">---</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-label">DATE OF BIRTH</span>
+                        <span class="profile-value" id="profileDob">---</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-label">EMERGENCY CONTACT</span>
+                        <span class="profile-value" id="profileEmergencyTel">---</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-error" id="profileError">
+                <span class="profile-error-title">SIGNAL LOST</span>
+                <span class="profile-error-sub">Could not load profile data. Please try again later.</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/profile/profile.js"></script>
+    <script type="module" src="../js/helpers/logout.js"></script>
+</body>
+
+</html>

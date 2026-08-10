@@ -19,7 +19,7 @@ export async function fetchModuleTransactions() {
                 {
                     transaction(
                         order_by: {createdAt: desc}
-                        where: {type: {_eq: "xp"}, object: {type: {_eq: "project"}}}
+                        where: {type: {_eq: "xp"}, object: {type: {_in: ["project", "piscine"]}}}
                     ) {
                         amount
                         type

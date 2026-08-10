@@ -52,7 +52,7 @@ const dom = {
 
 const state = {
     mode: 'js',
-    period: '6m',
+    period: 'start',
     rawExerciseTransactions: [],
     rawModuleTransactions: [],
     currentPoints: [],
@@ -101,8 +101,7 @@ function setPanelState(panelState) {
 
 function applyTheme(modeKey) {
     if (!dom.root) return;
-    // Theme lives on the shared graph-module wrapper so the GPU frame above
-    // the chart picks up the same accent color/glow as the active mode.
+    
     const themeTarget = dom.wrapper || dom.root;
     themeTarget.setAttribute('data-theme', modeKey);
 
@@ -119,6 +118,16 @@ function applyTheme(modeKey) {
             btn.classList.toggle('active', btn.dataset.mode === modeKey);
         });
     }
+
+    applyPeriodAvailability(modeKey);
+}
+
+function applyPeriodAvailability(modeKey) {
+    if (!dom.periodSelector) return;
+    const isModule = modeKey === MODULE_MODE.key;
+    dom.periodSelector.querySelectorAll('.xp-period-btn').forEach((btn) => {
+        btn.classList.toggle('hidden', !isModule && btn.dataset.period !== 'start');
+    });
 }
 
 function applyActivePeriod(periodKey) {
@@ -283,9 +292,7 @@ function recalculateAndRender(options = {}) {
     let periodTransactions = filterByPeriod(sourceTransactions, state.period);
     let points = buildXpProgression(periodTransactions);
 
-    // If the current time window has no data (e.g. everything happened
-    // further back than the selected period), fall back to showing
-    // everything since the start instead of a misleading blank chart.
+    
     if (points.length === 0 && state.period !== 'start' && sourceTransactions.length > 0 && !options.skipFallback) {
         state.period = 'start';
         applyActivePeriod('start');
@@ -315,13 +322,18 @@ function setMode(modeKey) {
         return;
     }
     state.mode = modeKey;
+    if (modeKey !== MODULE_MODE.key) {
+        state.period = 'start';
+    }
     applyTheme(modeKey);
+    applyActivePeriod(state.period);
     hideHover();
     recalculateAndRender();
 }
 
 function setPeriod(periodKey) {
     if (periodKey === state.period) return;
+    if (state.mode !== MODULE_MODE.key && periodKey !== 'start') return;
     state.period = periodKey;
     applyActivePeriod(periodKey);
     hideHover();

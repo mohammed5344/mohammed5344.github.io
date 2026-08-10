@@ -10,6 +10,10 @@
 </head>
 
 <body>
+    <a href="/profile/" class="profile-btn">
+        <canvas class="profile-btn-avatar" id="navAvatar" width="20" height="20"></canvas>
+        PROFILE
+    </a>
     <button class="logout-btn">LOGOUT</button>
 
     <dialog class="activity-dialog">
@@ -133,11 +137,11 @@
                                 <button class="xp-mode-btn" data-mode="module" type="button">MODULE</button>
                             </div>
                             <div class="xp-period-selector" id="xpPeriodSelector">
-                                <button class="xp-period-btn" data-period="start" type="button">SINCE START</button>
-                                <button class="xp-period-btn" data-period="1m" type="button">1M</button>
-                                <button class="xp-period-btn" data-period="3m" type="button">3M</button>
-                                <button class="xp-period-btn active" data-period="6m" type="button">6M</button>
-                                <button class="xp-period-btn" data-period="12m" type="button">12M</button>
+                                <button class="xp-period-btn active" data-period="start" type="button">SINCE START</button>
+                                <button class="xp-period-btn hidden" data-period="1m" type="button">1M</button>
+                                <button class="xp-period-btn hidden" data-period="3m" type="button">3M</button>
+                                <button class="xp-period-btn hidden" data-period="6m" type="button">6M</button>
+                                <button class="xp-period-btn hidden" data-period="12m" type="button">12M</button>
                             </div>
                         </div>
 

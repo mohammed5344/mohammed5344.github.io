@@ -12,6 +12,7 @@ login/index.html            login page
 home/index.html             main dashboard
 activity/index.html         activity/audit stats page
 audit-history/index.html    audit history page
+profile/index.html          user profile page
 css/                        one stylesheet per page + bg.css shared
 js/
   login/                    login page logic
@@ -35,6 +36,7 @@ js/
 - `/home/` - main dashboard
 - `/activity/` - activity/audit stats page
 - `/audit-history/` - audit history page
+- `/profile/` - user profile page
 
 ## Auth
 
