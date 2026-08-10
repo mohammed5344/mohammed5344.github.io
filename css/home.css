@@ -39,9 +39,10 @@
 }
 
 .progress-container {
+    position: relative;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: center;
     width: 100%;
 }
 
@@ -49,8 +50,9 @@
     --xp-accent: #f0db4f;
     --xp-accent-glow: rgba(240, 219, 79, 0.4);
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
     gap: 0;
     width: 100%;
     transition: filter var(--transition-medium);
@@ -72,8 +74,12 @@
 }
 
 .gpu-frame {
-    width: 100%;
-    max-width: 320px;
+    position: absolute;
+    top: 50%;
+    right: -60%;
+    transform: translateY(-50%);
+    width: 320px;
+    max-width: 90vw;
     flex: 0 0 auto;
     border: 1px solid #555;
     background: linear-gradient(160deg, rgba(8, 12, 12, 0.92), rgba(0, 10, 14, 0.85));
@@ -82,6 +88,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 70;
 }
 
 .gpu-frame-header {
@@ -693,7 +700,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    max-width: min(97vw, 1400px);
+    max-width: min(98vw, 1900px);
     z-index: 60;
 }
 
@@ -830,8 +837,8 @@
 
 .xp-graph {
     position: relative;
-    flex: 1 1 400px;
-    max-width: 660px;
+    flex: 1 1 700px;
+    max-width: 1400px;
     min-width: 320px;
     border: 1px solid var(--xp-accent);
     background: linear-gradient(160deg, rgba(8, 12, 12, 0.92), rgba(0, 10, 14, 0.85));
@@ -1003,7 +1010,7 @@
 .xp-graph-body {
     position: relative;
     width: 100%;
-    height: 220px;
+    height: 300px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     background:
@@ -1371,6 +1378,15 @@
     .graph-module {
         flex-direction: column;
         align-items: center;
+    }
+
+    .gpu-frame {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        max-width: 320px;
     }
 
     .bottom-panels {

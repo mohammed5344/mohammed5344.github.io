@@ -92,8 +92,9 @@
     width: 100%;
     max-width: 640px;
     background: var(--panel);
-    border: 1px solid #252525;
+    border: 1px solid var(--main-color);
     border-radius: var(--radius);
+    box-shadow: 0 0 24px var(--main-color-glow), inset 0 0 22px rgba(44, 187, 187, 0.08);
     padding: 28px;
     display: flex;
     flex-direction: column;
