@@ -62,7 +62,6 @@ export function makeRAM() {
 }
 
 export function currentProject(data) {
-    console.log(data)
     const nameEl = document.getElementById("current-project-name");
     if (!nameEl) return;
     const projectName = data.progress[0]?.object.name;

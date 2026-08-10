@@ -16,7 +16,6 @@ async function validateUser() {
     window.location.href = "/login/";
     return null;
   }
-  console.log(token);
   try {
     const resp = await fetch("https://learn.reboot01.com/api/graphql-engine/v1/graphql", {
       method: "POST",
@@ -49,7 +48,6 @@ async function validateUser() {
       return null;
     }
 
-    console.log(data.data.user);
     const user = Array.isArray(data.data.user) ? data.data.user[0] : data.data.user;
     const navAvatarCanvas = document.getElementById('navAvatar');
     renderAvatar(navAvatarCanvas, user && (user.login || user.email) || 'user');
