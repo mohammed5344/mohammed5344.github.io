@@ -1,14 +1,13 @@
 import { getCookie } from "../helpers/cookies.js";
 
-const GRAPHQL_ENDPOINT = "https://learn.reboot01.com/api/graphql-engine/v1/graphql";
-
+// fetch data for the piscines in the progress graph
 export async function fetchPiscineTransactions() {
     const token = getCookie("token");
     if (!token) {
         throw new Error("missing auth token");
     }
 
-    const resp = await fetch(GRAPHQL_ENDPOINT, {
+    const resp = await fetch("https://learn.reboot01.com/api/graphql-engine/v1/graphql", {
         method: "POST",
         headers: {
             "Authorization": `Bearer ${token}`,

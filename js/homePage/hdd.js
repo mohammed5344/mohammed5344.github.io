@@ -1,5 +1,9 @@
 const hddDiv = document.querySelector('.hdd');
 
+/*
+    this function just make the HDD graphics (not filled) by appendind rows of divs inside an 
+    exsiting div
+*/
 export function makeHDD() {
     const hddPixels =
         [

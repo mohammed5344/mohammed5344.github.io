@@ -104,7 +104,7 @@ function applyTheme(modeKey) {
     
     const themeTarget = dom.wrapper || dom.root;
     themeTarget.setAttribute('data-theme', modeKey);
-
+    
     const config = PISCINE_CONFIG[modeKey] || (modeKey === MODULE_MODE.key ? MODULE_MODE : null);
     if (dom.sub && config) {
         dom.sub.textContent = config.label;
@@ -122,6 +122,7 @@ function applyTheme(modeKey) {
     applyPeriodAvailability(modeKey);
 }
 
+// this function apply visibility for the buttons (because there is options only for module)...
 function applyPeriodAvailability(modeKey) {
     if (!dom.periodSelector) return;
     const isModule = modeKey === MODULE_MODE.key;
@@ -130,6 +131,7 @@ function applyPeriodAvailability(modeKey) {
     });
 }
 
+// this function control which key is selected (in styling)
 function applyActivePeriod(periodKey) {
     if (!dom.periodSelector) return;
     dom.periodSelector.querySelectorAll('.xp-period-btn').forEach((btn) => {
@@ -177,10 +179,10 @@ function computeScales(points) {
 
 function renderChart(points) {
     buildGridLines();
-
+    
     const plotPoints = [{ date: points[0].date, total: 0, gain: 0, synthetic: true }, ...points];
     const scales = computeScales(points);
-
+    
     let lineD = '';
     plotPoints.forEach((point, index) => {
         const x = scales.xFor(point.date);
@@ -225,6 +227,7 @@ function findNearestPoint(viewX) {
     return closest;
 }
 
+
 function handlePointerMove(evt) {
     if (!state.currentPoints || state.currentPoints.length === 0) return;
     const rect = dom.svg.getBoundingClientRect();
@@ -233,17 +236,21 @@ function handlePointerMove(evt) {
     const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
     const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
 
+    // I don't understand this part very well but it just means we are converting the position we get
+    // to the svg position
     const viewX = ((clientX - rect.left) / rect.width) * VIEW_WIDTH;
     const point = findNearestPoint(viewX);
     if (!point) return;
 
     const x = state.currentScales.xFor(point.date);
     const y = state.currentScales.yFor(point.total);
-
+    
     dom.hoverLine.setAttribute('x1', String(x));
     dom.hoverLine.setAttribute('x2', String(x));
+
     dom.hoverDot.setAttribute('cx', String(x));
     dom.hoverDot.setAttribute('cy', String(y));
+
     dom.hoverGroup.classList.add('visible');
 
     dom.tooltipDate.textContent = formatDate(point.date);
@@ -267,6 +274,7 @@ function handlePointerMove(evt) {
     }
 }
 
+// its so clear no need to explain bro
 function attachHoverEvents() {
     if (!dom.hoverCapture) return;
     dom.hoverCapture.addEventListener('pointermove', handlePointerMove);
@@ -340,6 +348,7 @@ function setPeriod(periodKey) {
     recalculateAndRender();
 }
 
+// this function add event listeners for the buttons in the graph
 function attachControlEvents() {
     if (dom.modeSelector) {
         dom.modeSelector.addEventListener('click', (evt) => {
@@ -370,13 +379,13 @@ async function loadData() {
     setStatus('LOADING');
     setPanelState('loading');
 
-    try {
-        const [exerciseTransactions, moduleTransactions] = await Promise.all([
-            fetchPiscineTransactions(),
-            fetchModuleTransactions(),
-        ]);
+    try {        
+        const exerciseTransactions = await fetchPiscineTransactions();
+        const moduleTransactions = await fetchModuleTransactions();
+
         state.rawExerciseTransactions = Array.isArray(exerciseTransactions) ? exerciseTransactions : [];
         state.rawModuleTransactions = Array.isArray(moduleTransactions) ? moduleTransactions : [];
+
         state.isLoading = false;
         state.hasFetched = true;
         setStatus('ONLINE');

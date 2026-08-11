@@ -108,14 +108,18 @@ export function filterByPeriod(transactions, periodKey) {
 
 export function buildXpProgression(transactions) {
     const valid = transactions.filter(
-        (tx) => tx && typeof tx.amount === 'number' && tx.createdAt && !Number.isNaN(new Date(tx.createdAt).getTime())
+        (tx) =>
+            tx &&
+            typeof tx.amount === 'number' &&
+            tx.createdAt &&
+            !Number.isNaN(new Date(tx.createdAt).getTime())
     );
-
+    
     const sorted = [...valid].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
     let cumulative = 0;
     const points = [];
-
+    
     for (const tx of sorted) {
         cumulative += tx.amount;
         points.push({

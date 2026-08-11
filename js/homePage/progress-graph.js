@@ -1,4 +1,8 @@
 
+/*
+    this function just make the GPU graphics (not filled) by appendind rows of divs inside an 
+    exsiting div
+*/
 export function makeGPU() {
     const gpuPixels = [
         ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],

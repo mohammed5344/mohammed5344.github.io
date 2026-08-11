@@ -5,6 +5,10 @@ const hddDiv = document.querySelector('.hdd');
 const gpuDiv = document.querySelector('.gpu');
 const progressContainerDiv = document.querySelector('.progress-container');
 
+/*
+    this function just make the CPU graphics (not filled) by appendind rows of divs inside an 
+    exsiting div
+*/
 export function makeCpu() {
     const cpuPixels =
         [
@@ -101,7 +105,7 @@ export function startConnector() {
     const wireFlow4 = document.getElementById('wireFlow4')
     const wireBase5 = document.getElementById('wireBase5')
     const wireFlow5 = document.getElementById('wireFlow5')
-
+    
     function update() {
         const batteryRect = batteryDiv.getBoundingClientRect()
         const cpuRect = cpuDiv.getBoundingClientRect()
@@ -140,6 +144,9 @@ export function startConnector() {
     requestAnimationFrame(update)
 }
 
+/*
+    this function is used to fill the two containers with data represeting the latest two audits made
+*/
 export function fillAuditData(audit) {
     const containers = document.querySelectorAll('.audit-info');
     for(let i = 0; i < containers.length; i++) {

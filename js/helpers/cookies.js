@@ -1,4 +1,10 @@
 
+/*
+    this file is helper to authorize a user
+      1. write cookie used only to write the token 
+      2. erase cookie used to delete the token for logging ouy
+      3. getCookie used to get the token to query the data
+*/
 export function writeCookie(name = '', value = '', expiresInDays, path = '/') {
     const date = new Date();
     date.setTime(date.getTime() + (expiresInDays * 24 * 60 * 60 * 1000));

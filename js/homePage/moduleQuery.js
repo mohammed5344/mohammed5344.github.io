@@ -2,6 +2,10 @@ import { getCookie } from "../helpers/cookies.js";
 
 const GRAPHQL_ENDPOINT = "https://learn.reboot01.com/api/graphql-engine/v1/graphql";
 
+/*
+    this function is used to fetch the data for the progress graph in module mode.
+    it wokr by fetching transaction where object id either is a piscine or a project and the type is XP
+*/
 export async function fetchModuleTransactions() {
     const token = getCookie("token");
     if (!token) {

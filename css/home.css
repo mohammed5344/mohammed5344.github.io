@@ -1018,6 +1018,8 @@
         linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
     background-size: 20px 20px;
     overflow: visible;
+    margin-top: 20px;
+    z-index: 500;
 }
 
 .xp-graph-svg {
@@ -1055,6 +1057,8 @@
 
 .xp-hover-group.visible {
     opacity: 1;
+    z-index: 500;
+
 }
 
 .xp-hover-line {
@@ -1177,11 +1181,30 @@
     animation: xpLoadingBar 1s ease-in-out infinite;
 }
 
-.xp-loading-bars>span:nth-child(1) { height: 40%; animation-delay: 0s; }
-.xp-loading-bars>span:nth-child(2) { height: 70%; animation-delay: 0.1s; }
-.xp-loading-bars>span:nth-child(3) { height: 100%; animation-delay: 0.2s; }
-.xp-loading-bars>span:nth-child(4) { height: 60%; animation-delay: 0.3s; }
-.xp-loading-bars>span:nth-child(5) { height: 30%; animation-delay: 0.4s; }
+.xp-loading-bars>span:nth-child(1) {
+    height: 40%;
+    animation-delay: 0s;
+}
+
+.xp-loading-bars>span:nth-child(2) {
+    height: 70%;
+    animation-delay: 0.1s;
+}
+
+.xp-loading-bars>span:nth-child(3) {
+    height: 100%;
+    animation-delay: 0.2s;
+}
+
+.xp-loading-bars>span:nth-child(4) {
+    height: 60%;
+    animation-delay: 0.3s;
+}
+
+.xp-loading-bars>span:nth-child(5) {
+    height: 30%;
+    animation-delay: 0.4s;
+}
 
 .xp-loading-text {
     font-family: var(--pixel-font);
@@ -1252,10 +1275,13 @@
 }
 
 @keyframes xpPulseDot {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         box-shadow: 0 0 6px var(--xp-accent-glow);
     }
+
     50% {
         opacity: 0.4;
         box-shadow: 0 0 2px var(--xp-accent-glow);
@@ -1263,10 +1289,13 @@
 }
 
 @keyframes xpLoadingBar {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scaleY(0.4);
         opacity: 0.6;
     }
+
     50% {
         transform: scaleY(1);
         opacity: 1;

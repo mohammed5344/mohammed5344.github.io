@@ -7,7 +7,7 @@ async function getData() {
         console.error("could not read token");
         return [];
     }
-
+    const username = await window.sessionStorage.username;
     try {
         const resp = await fetch(
             "https://learn.reboot01.com/api/graphql-engine/v1/graphql",
@@ -23,7 +23,7 @@ async function getData() {
                             audit(
                                 where: {
                                     auditor: {
-                                        login: { _eq: "malmadhoo" }
+                                        login: { _eq: "${username}" }
                                     },
                                     grade: {
                 _is_null: false
@@ -61,7 +61,7 @@ async function getData() {
             console.error(errors);
             return [];
         }
-
+        
         return data.audit.map(audit => ({
             project: audit.group?.object?.name ?? "Unknown project",
             status: audit.grade >= 1 ? "pass" : "fail",

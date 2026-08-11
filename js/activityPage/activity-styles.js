@@ -1,4 +1,8 @@
 
+/*
+    this file just contains the styles, animation and painting of the robot div
+    nothing that important just event listeners.
+*/
 const robotDiv = document.querySelector('.robot');
 let robotFocus = false;
 

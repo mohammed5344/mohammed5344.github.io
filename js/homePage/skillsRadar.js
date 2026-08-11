@@ -65,10 +65,12 @@ function renderGrid(count) {
     for (let ring = 1; ring <= RINGS; ring++) {
         const r = (RADIUS / RINGS) * ring;
         const points = [];
+
         for (let i = 0; i < count; i++) {
             const p = pointOnCircle(angleFor(i, count), r);
             points.push(`${p.x},${p.y}`);
         }
+
         dom.grid.appendChild(
             makeEl("polygon", {
                 points: points.join(" "),
@@ -81,11 +83,11 @@ function renderGrid(count) {
 function renderAxesAndLabels(skills) {
     dom.axes.innerHTML = "";
     dom.labels.innerHTML = "";
-
+    
     skills.forEach((skill, i) => {
         const angle = angleFor(i, skills.length);
         const outer = pointOnCircle(angle, RADIUS);
-
+        
         dom.axes.appendChild(
             makeEl("line", {
                 x1: CENTER,

@@ -7,6 +7,7 @@ function hashString(str) {
     return hash;
 }
 
+
 export function renderAvatar(canvas, seed) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');

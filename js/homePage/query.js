@@ -1,6 +1,7 @@
 import { getCookie } from "../helpers/cookies.js";
 import { fillBattery } from "./battery.js";
 
+// NOTE: all the data get fetched here except the progress as it need seperate query to not override
 
 export async function getData() {
     const token = getCookie("token");
@@ -9,6 +10,9 @@ export async function getData() {
         return;
     }
 
+    const username = await window.sessionStorage.username;
+    console.log(username);
+    
     try {
         const resp = await fetch("https://learn.reboot01.com/api/graphql-engine/v1/graphql", {
             method: "POST",
@@ -51,7 +55,7 @@ export async function getData() {
                             }
                         }
                         audit(
-                            where: {auditor: {login: {_eq: "malmadhoo"}}, grade: {_is_null: false}}
+                            where: {auditor: {login: {_eq: "${username}"}}, grade: {_is_null: false}}
                             order_by: {updatedAt: desc}
                             limit: 2
                         ) {

@@ -10,6 +10,10 @@ import { initXpGraph } from "./xpGraph.js";
 import { renderSkillsRadar } from "./skillsRadar.js";
 import { renderAvatar } from "../helpers/avatar.js";
 
+/*
+  validate user by using the token stored to try to fetch the username
+  if valid then it will take the username and store it in the sessoin storage, if not redirect to login...
+*/
 async function validateUser() {
   const token = getCookie("token");
   if (!token) {
@@ -27,7 +31,6 @@ async function validateUser() {
         query: `
           query {
             user {
-              email
               login
             }
           }
@@ -48,6 +51,8 @@ async function validateUser() {
       return null;
     }
 
+    await window.sessionStorage.setItem("username", data.data.user[0].login);
+      
     const user = Array.isArray(data.data.user) ? data.data.user[0] : data.data.user;
     const navAvatarCanvas = document.getElementById('navAvatar');
     renderAvatar(navAvatarCanvas, user && (user.login || user.email) || 'user');

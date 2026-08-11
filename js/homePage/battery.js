@@ -3,6 +3,7 @@ const batteryDiv = document.querySelector('.battery');
 
 let batteryInterval = null;
 
+
 function drawBlock(block, colors, children, startRow, startCol, batteryWidth) {
     for (let r = 0; r < colors.length; r++) {
         for (let c = 0; c < colors[r].length; c++) {
@@ -13,6 +14,7 @@ function drawBlock(block, colors, children, startRow, startCol, batteryWidth) {
     }
 }
 
+//this functio is used to create the blinking animation by removing a block
 function clearBlock(block, children, startRow, startCol, batteryWidth) {
     for (let r = 0; r < 10; r++) {
         for (let c = 0; c < 6; c++) {
@@ -23,7 +25,10 @@ function clearBlock(block, children, startRow, startCol, batteryWidth) {
     }
 }
 
-
+/*
+    this function just make the battery graphics (not filled) by appendind rows of divs inside an 
+    exsiting div
+*/
 export function makeBattery() {
     const batteryPixels =
         [
@@ -58,8 +63,16 @@ export function makeBattery() {
     }
 }
 
+/*
+    this function is used to fill the battery graphics depending on the ratio
+    !!info:
+        ratio > 1   === battery full and color is green.
+        ratio > 0.8 === battery 3 bars and color is green.
+        ratio > 0.5 === bettery 2 bars and color is yellow
+        ratio < 0.5 === battery 1 bar and color is red
 
-
+        NOTE: in all cases except the first one there will be a bar that is blinking 
+*/
 export function fillBattery(ratio = 0) {
 
     const children = batteryDiv.children;
@@ -102,7 +115,6 @@ export function fillBattery(ratio = 0) {
         ['#4e2121', '#9a4646', '#9a4646', '#9a4646', '#9a4646', '#4e2121'],
         ['#4e2121', '#4e2121', '#4e2121', '#4e2121', '#4e2121', '#4e2121'],
     ];
-
 
     if (batteryInterval) {
         clearInterval(batteryInterval);

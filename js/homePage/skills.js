@@ -1,4 +1,8 @@
 
+/*
+    this function just make the RAM graphics (not filled) by appendind rows of divs inside an 
+    exsiting div
+*/
 export function makeRAM() {
     const ram = document.querySelectorAll('.ram');
     const ramPixels = [
@@ -61,6 +65,7 @@ export function makeRAM() {
 
 }
 
+// function to show current project under the ram div
 export function currentProject(data) {
     const nameEl = document.getElementById("current-project-name");
     if (!nameEl) return;
